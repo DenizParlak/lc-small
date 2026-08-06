@@ -14,5 +14,5 @@ def connect():
 def list_shipments(conn, email):
     cur = conn.cursor()
     return cur.execute(
-        "SELECT id, total FROM shipments WHERE email = '%s' ORDER BY id" % email
+        "SELECT id, total FROM shipments WHERE email = ? ORDER BY id", (email,)
     ).fetchall()
